@@ -14,6 +14,7 @@ namespace SignalXIssues
         {
          
             TestHelper.MaxTestWaitTime = TimeSpan.FromSeconds(20);
+            string receivedMessage = "";
             var scenario = new ScenarioDefinition(
                 script: @"signalx.ready(function (server) {
 							      server.myServer('abc',function (message) {
@@ -24,12 +25,13 @@ namespace SignalXIssues
                     SignalX.Server("myServer",
                         request =>
                         {
+                            receivedMessage = request.Message.ToString();
                             SignalX.RespondToAll(request.ReplyTo, request.Message);
                         });
                 },
                 checks: () =>
                 {
-                    Assert.IsTrue(true);
+                    Assert.AreEqual("abc", receivedMessage);
                 }
             );
             TestHelper.RunScenario(scenario);
