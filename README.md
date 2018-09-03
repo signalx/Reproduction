@@ -5,6 +5,8 @@ Sample test solution you can use to easily reproduce issues or demonstrate featu
 The following shows how you would setup a simple test by specifying the script, server and assertions, All the heavy lifting and setup is done for you
 You could also adjust TestHelper.MaxTestWaitTime to suit your test scenario. Enjoy!
 
+
+```
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SignalXLib.Lib;
 using SignalXLib.TestHelperLib;
@@ -44,3 +46,4 @@ namespace SignalXIssues
         }
     }
 }
+```
